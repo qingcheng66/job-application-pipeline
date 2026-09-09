@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>{{CANDIDATE_NAME}}_{{COMPANY_NAME}}_{{JOB_TITLE}}</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      color: #1f2937;
+      background: #ffffff;
+      line-height: 1.45;
+      font-size: 13.5px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 18mm;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    header {
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .header-left h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #111827;
+      letter-spacing: 1px;
+    }
+    .header-left p {
+      font-size: 12.5px;
+      color: #4b5563;
+      margin-top: 4px;
+    }
+    .header-right {
+      text-align: right;
+      font-size: 12px;
+      color: #4b5563;
+    }
+    section {
+      margin-bottom: 11px;
+    }
+    h2 {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #1e40af;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 3px;
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 13.5px;
+      color: #111827;
+      margin-bottom: 2px;
+    }
+    .item-sub {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+    ul {
+      padding-left: 17px;
+    }
+    li {
+      margin-bottom: 4px;
+      font-size: 12.8px;
+      color: #374151;
+      text-align: justify;
+    }
+    li strong {
+      color: #111827;
+      font-weight: 600;
+    }
+    .skills-p {
+      font-size: 12.8px;
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div>
+      <header>
+        <div class="header-left">
+          <h1>张三</h1>
+          <p>求职意向：AI全栈开发工程师 | 期望城市：深圳 / 上海 / 北京</p>
+        </div>
+        <div class="header-right">
+          <p>电话：+86 13800000000 | 邮箱：zhangsan@example.com</p>
+          <p>GitHub: github.com/username</p>
+        </div>
+      </header>
+
+      <section>
+        <h2>教育背景</h2>
+        <div class="item-header">
+          <span>某某大学 · 计算机科学与技术 (工学学士)</span>
+          <span>2023.09 – 2027.06</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>专业技能</h2>
+        <p class="skills-p"><strong>AI & Agentic 架构：</strong>熟练掌握 LangGraph 状态机编排、多 Agent 协同协议、Tool Calling、RAG 混合检索、SSE 低延迟流式响应。</p>
+        <p class="skills-p"><strong>后端 & 微服务：</strong>精通 Java Spring Boot、Python FastAPI，熟悉高并发缓存治理、Redis 分布式锁、MySQL 慢 SQL 优化与交易分账系统。</p>
+        <p class="skills-p"><strong>全栈 & 运维：</strong>精通 Vue 3、TypeScript，熟练 Docker 容器化集群运维、OpenResty 反向代理、Linux 自动化脚本与代码安全审计。</p>
+      </section>
+
+      <section>
+        <h2>实习经历</h2>
+        <div class="item-header">
+          <span>某某大数据科技有限公司</span>
+          <span>2026.06 – 2026.08 (3个月)</span>
+        </div>
+        <div class="item-sub">
+          <span>AI全栈开发实习生 / 后端开发</span>
+          <span>苏州</span>
+        </div>
+        <ul>
+          <li>主导企业内部 AI 自动化巡检与智能运维 Agent 架构落地，将平均排障响应耗时缩减 80%...</li>
+          <li>参与高并发 Spring Boot 微服务架构开发，支撑 2,000+ 商户与交易资金结算闭环，资金流 100% 零错账...</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>核心项目经历</h2>
+        <!-- Project 1 -->
+        <div class="item-header">
+          <span>Agent Platform（多 Agent 协同工作流平台）</span>
+          <span>2026.06 – 2026.08</span>
+        </div>
+        <div class="item-sub">
+          <span>架构设计 & 核心研发 | Python, FastAPI, LangGraph, SSE, Docker</span>
+          <span>核心主程</span>
+        </div>
+        <ul>
+          <li><strong>Agentic 拓扑架构：</strong>基于 LangGraph 状态图设计主控调度与反思校验路由，复杂长链任务编排耗时缩减 45%。</li>
+          <li><strong>低延迟流式传输：</strong>基于 SSE 设计低延迟异步流式协议，将前端推理首字响应延迟压缩至 320ms。</li>
+        </ul>
+
+        <!-- Project 2 -->
+        <div class="item-header" style="margin-top: 6px;">
+          <span>智慧商业微服务与资金清算中台</span>
+          <span>2026.06 – 2026.08</span>
+        </div>
+        <div class="item-sub">
+          <span>后端核心主程 | Java, Spring Boot, Redis, MySQL, 微信/支付宝API</span>
+          <span>微服务研发</span>
+        </div>
+        <ul>
+          <li><strong>高并发交易：</strong>设计基于 Redis 预扣减 + Lua 脚本分布式锁防超卖机制，高并发场景杜绝超卖。</li>
+          <li><strong>支付与清算：</strong>手写微信支付 APIv3 双通道支付网关与自动化分润清算体系，保障资金流 100% 账实相符。</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
