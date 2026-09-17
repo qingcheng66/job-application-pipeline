@@ -83,12 +83,28 @@ flowchart TD
 - 用户选定目标岗位后，创建目录 `~/Desktop/求职投递/<企业名称>/`。
 - 将步骤 2~4 的分析成果写入 `01_岗位分析与投递规则.md` 存入该目录。
 
-### 步骤 6：针对 JD 从知识库定制 A4 简历与双 Agent 审阅（Tailored Building & Dual-Agent Audit）
+### 步骤 6：知识库装配与强制独立子 Agent 物理审阅（Mandated Dual-Agent Audit）
 - **读取底层事实源**：
   - `references/wiki-corpus-bank.md`（5 大专业技能维度重构、4 选 2 深度项目库与 6 大赛道装配矩阵）
   - `/Users/apple/knowledge/career/resume-master-bank.md`（SSOT 核心底库）
-- **Drafter 起草**：严格执行“4 选 2”，单行嵌入教育背景，输出 40~42 行紧凑 HTML。
-- **Reviewer 审阅**：加载 `references/reviewer_rubric.md` 进行红笔批改，生成 JSON 字符串替换补丁，修补任何不合规之处。
+- **主 Agent (Drafter) 起草**：严格执行“4 选 2”，单行嵌入教育背景，输出 40~42 行紧凑 HTML 源码存入归档目录。
+- **🚨 强制执行子 Agent 审阅闸口（严禁单 Agent 自编自审走过场）**：
+  主 Agent 起草完 HTML 后，**物理禁止直接调用打印 PDF 工具**！
+  **必须显式调用 `invoke_subagent` 派发独立的 Reviewer Subagent**：
+  - `TypeName`: `self`
+  - `Role`: `Strict Resume Reviewer`
+  - `Prompt`: 必须强制要求子 Agent 扮演刻薄的技术 Leader，加载 `references/reviewer_rubric.md`，对刚才生成的 HTML 源码进行残酷地毯式逐行审查。
+  - **审查 6 大防伪红线**：
+    1. `[BAN_COMPETITION]` 绝无虚构竞赛（蓝桥杯、数学建模、ACM等）；
+    2. `[BAN_THREE_YEARS]` 严禁“连续三年”奖学金；
+    3. `[BAN_SECTION_ENGLISH]` 栏目标题严禁任何英文单词（纯中文排版）；
+    4. `[BAN_ENGLISH_FLUENCY]` 英语水平锁死 CET-4 仅技术文档查阅；
+    5. `[BAN_SELF_PRAISE]` 绝无“核心特质/自我评价”等自嗨板块；
+    6. `[HARD_TIME]` 实习周期严格锁定 3 个月，严禁“至今”。
+  - **协议回传**：子 Agent 必须回传 Part A JSON 字符串替换补丁列表（`old_string` -> `new_string`）。
+- **主 Agent 补丁实装与汇报**：
+  主 Agent 读取 Reviewer Subagent 的回执，对 HTML 文件实施字符串替换打补丁，并在会话中向用户明确展示【Reviewer 审阅挑刺报告与修复对比】。
+- 确认 0 违规后，方可放行进入步骤 7 进行 PDF 编译与 ATS 质检！
 
 ### 步骤 7：A4 渲染与 ATS 文本层质检（Rendering & ATS Verification）
 - 调用 CDP `Page.printToPDF` 渲染为矢量 PDF，存至企业归档目录。
