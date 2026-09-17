@@ -9,179 +9,310 @@
       margin: 0;
     }
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-      color: #1f2937;
-      background: #ffffff;
-      line-height: 1.45;
-      font-size: 13.5px;
+      box-sizing: border-box;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
-    .page {
+    html, body {
       width: 210mm;
       height: 297mm;
-      padding: 16mm 18mm;
-      position: relative;
+      max-height: 297mm;
+      background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      color: #0f172a;
+      font-size: 8.2pt;
+      line-height: 1.41;
       overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page-container {
+      width: 210mm;
+      height: 297mm;
+      max-height: 297mm;
+      padding: 14px 18px 12px 18px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
+      gap: 6px;
+      box-sizing: border-box;
+      overflow: hidden;
     }
-    header {
-      border-bottom: 2px solid #2563eb;
-      padding-bottom: 10px;
-      margin-bottom: 12px;
+
+    /* 头部设计：科技蓝质感，单行教育背景，无冗余英文 */
+    .header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: center;
+      padding-bottom: 5px;
+      margin-bottom: 2px;
+      border-bottom: 2px solid #e2e8f0;
+      position: relative;
     }
-    .header-left h1 {
-      font-size: 24px;
-      font-weight: 700;
-      color: #111827;
-      letter-spacing: 1px;
+    .header::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 110px;
+      height: 2.5px;
+      background: #1d4ed8;
     }
-    .header-left p {
-      font-size: 12.5px;
-      color: #4b5563;
-      margin-top: 4px;
+    .header-left {
+      flex: 1;
     }
-    .header-right {
-      text-align: right;
-      font-size: 12px;
-      color: #4b5563;
-    }
-    section {
-      margin-bottom: 11px;
-    }
-    h2 {
-      font-size: 14.5px;
-      font-weight: 700;
-      color: #1e40af;
-      border-bottom: 1px solid #e5e7eb;
-      padding-bottom: 3px;
-      margin-bottom: 7px;
+    .header-top-row {
       display: flex;
       align-items: center;
-      text-transform: uppercase;
+      gap: 12px;
+      margin-bottom: 3px;
+    }
+    .name {
+      font-size: 18.5pt;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      color: #0f172a;
+    }
+    .target-role {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 8.8pt;
+      font-weight: 700;
+      color: #0f172a;
+      background: #eff6ff;
+      padding: 2.5px 8px;
+      border-radius: 4px;
+      border: 1px solid #bfdbfe;
+    }
+    .target-role-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #1d4ed8;
+    }
+    .edu-line {
+      font-size: 8.8pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 4px;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1.25fr 1.45fr;
+      column-gap: 10px;
+      row-gap: 3px;
+      font-size: 8.0pt;
+      color: #475569;
+    }
+    .info-item strong {
+      color: #0f172a;
+      font-weight: 600;
+    }
+    .info-item a {
+      color: #0f172a;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .header-right {
+      margin-left: 14px;
+    }
+    .photo-frame {
+      width: 58px;
+      height: 75px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1.5px solid #cbd5e1;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      background: #f8fafc;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* 栏目通用标题：纯中文，严禁中英拼凑 */
+    .section-title {
+      font-size: 9.3pt;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      border-bottom: 1.5px solid #0f172a;
+      padding-bottom: 2px;
+      margin-bottom: 4px;
       letter-spacing: 0.5px;
     }
-    .item-header {
+
+    /* 经历条目布局 */
+    .entry-header {
       display: flex;
       justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.5px;
+    }
+    .entry-name {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .entry-role {
+      font-size: 8.1pt;
       font-weight: 600;
-      font-size: 13.5px;
-      color: #111827;
+      color: #334155;
+    }
+    .entry-date {
+      font-size: 7.9pt;
+      font-weight: 600;
+      color: #64748b;
+    }
+    .entry-tech {
+      font-size: 7.6pt;
+      color: #475569;
+      background: #f8fafc;
+      padding: 1.5px 6px;
+      border-radius: 3px;
+      border-left: 2.5px solid #1d4ed8;
+      margin-bottom: 2.5px;
+      line-height: 1.34;
+    }
+    .entry-tech strong {
+      color: #0f172a;
+    }
+
+    /* 列表排版 */
+    ul.bullet-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin-bottom: 1px;
+    }
+    ul.bullet-list li {
+      position: relative;
+      padding-left: 10px;
       margin-bottom: 2px;
+      font-size: 7.9pt;
+      color: #334155;
+      text-align: justify;
+      line-height: 1.37;
     }
-    .item-sub {
+    ul.bullet-list li::before {
+      content: "▪";
+      position: absolute;
+      left: 1px;
+      top: -0.5px;
+      color: #1d4ed8;
+      font-size: 8.5pt;
+    }
+    ul.bullet-list li strong {
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    /* 专业技能网格 */
+    .skills-block {
       display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: #6b7280;
-      margin-bottom: 4px;
+      flex-direction: column;
+      gap: 2.5px;
     }
-    ul {
-      padding-left: 17px;
-    }
-    li {
-      margin-bottom: 4px;
-      font-size: 12.8px;
-      color: #374151;
+    .skill-row {
+      font-size: 7.9pt;
+      color: #334155;
+      line-height: 1.37;
       text-align: justify;
     }
-    li strong {
-      color: #111827;
-      font-weight: 600;
-    }
-    .skills-p {
-      font-size: 12.8px;
-      margin-bottom: 4px;
-      line-height: 1.5;
+    .skill-row strong {
+      color: #0f172a;
+      font-weight: 700;
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <div>
-      <header>
-        <div class="header-left">
-          <h1>张三</h1>
-          <p>求职意向：AI全栈开发工程师 | 期望城市：深圳 / 上海 / 北京</p>
-        </div>
-        <div class="header-right">
-          <p>电话：+86 13800000000 | 邮箱：zhangsan@example.com</p>
-          <p>GitHub: github.com/username</p>
-        </div>
-      </header>
+  <div class="page-container">
 
-      <section>
-        <h2>教育背景</h2>
-        <div class="item-header">
-          <span>某某大学 · 计算机科学与技术 (工学学士)</span>
-          <span>2023.09 – 2027.06</span>
+    <!-- 头部：姓名、求职意向、单行教育背景、联系方式与证件照 -->
+    <header class="header">
+      <div class="header-left">
+        <div class="header-top-row">
+          <h1 class="name">刘仁晓君</h1>
+          <div class="target-role">
+            <span class="target-role-dot"></span>
+            求职意向：{{TARGET_ROLE}} · 2027届校园招聘
+          </div>
         </div>
-      </section>
+        <div class="edu-line">
+          <span><strong>南京中医药大学</strong> · 软件工程 · 本科 (2023.09 – 2027.06 · 2027届在读) · 专业排名前10% (获校级学业综合奖学金)</span>
+        </div>
+        <div class="info-grid">
+          <div class="info-item">📞 电话：<strong>193-3063-3407</strong></div>
+          <div class="info-item">✉️ 邮箱：<strong>1120835055@qq.com</strong></div>
+          <div class="info-item">💻 GitHub：<a href="https://github.com/qingcheng66" target="_blank">github.com/qingcheng66</a></div>
+          <div class="info-item">📍 意向城市：<strong>{{TARGET_CITIES}}</strong></div>
+          <div class="info-item">📝 博客：<a href="https://blog.084623224.xyz" target="_blank">blog.084623224.xyz</a></div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="photo-frame">
+          <img src="{{PHOTO_BASE64}}" alt="证件照">
+        </div>
+      </div>
+    </header>
 
-      <section>
-        <h2>专业技能</h2>
-        <p class="skills-p"><strong>AI & Agentic 架构：</strong>熟练掌握 LangGraph 状态机编排、多 Agent 协同协议、Tool Calling、RAG 混合检索、SSE 低延迟流式响应。</p>
-        <p class="skills-p"><strong>后端 & 微服务：</strong>精通 Java Spring Boot、Python FastAPI，熟悉高并发缓存治理、Redis 分布式锁、MySQL 慢 SQL 优化与交易分账系统。</p>
-        <p class="skills-p"><strong>全栈 & 运维：</strong>精通 Vue 3、TypeScript，熟练 Docker 容器化集群运维、OpenResty 反向代理、Linux 自动化脚本与代码安全审计。</p>
-      </section>
+    <!-- 专业技能：严格按 JD 侧重动态调整先后顺序 -->
+    <section>
+      <div class="section-title">专业技能</div>
+      <div class="skills-block">
+        <div class="skill-row"><strong>AI & 智能体工程：</strong>精通多 Agent 协作状态机编排与轻量通讯协议设计；熟练掌握 Prompt Engineering、RAG 混合检索、上下文截断治理与本地向量索引调优。</div>
+        <div class="skill-row"><strong>后端架构与微服务：</strong>精通 Java / Spring Boot / Spring Cloud 分布式微服务架构，熟练使用 Redis 缓存、MySQL 索引调优与高并发幂等控制。</div>
+        <div class="skill-row"><strong>前端工程与流式交互：</strong>熟练掌握 React 18 / Vue 3、TypeScript，精通 SSE 低延迟长文本流式消费、前端背压控制与环形缓冲队列设计。</div>
+        <div class="skill-row"><strong>系统底层与工程运维：</strong>熟练 Linux 系统级文件锁与并发互斥、Docker 容器化部署；通过全国大学英语四级（CET-4），具备英文前沿官方技术文档查阅能力。</div>
+      </div>
+    </section>
 
-      <section>
-        <h2>实习经历</h2>
-        <div class="item-header">
-          <span>某某大数据科技有限公司</span>
-          <span>2026.06 – 2026.08 (3个月)</span>
-        </div>
-        <div class="item-sub">
-          <span>AI全栈开发实习生 / 后端开发</span>
-          <span>苏州</span>
-        </div>
-        <ul>
-          <li>主导企业内部 AI 自动化巡检与智能运维 Agent 架构落地，将平均排障响应耗时缩减 80%...</li>
-          <li>参与高并发 Spring Boot 微服务架构开发，支撑 2,000+ 商户与交易资金结算闭环，资金流 100% 零错账...</li>
-        </ul>
-      </section>
+    <!-- 实习经历：时间严格锁定为 3 个月，严禁“至今” -->
+    <section>
+      <div class="section-title">实习经历</div>
+      <div class="entry-header">
+        <span class="entry-name">苏州深古大数据有限公司</span>
+        <span class="entry-role">AI 全栈开发实习生</span>
+        <span class="entry-date">2026/06 – 2026/08 (3个月)</span>
+      </div>
+      <div class="entry-tech"><strong>核心技术栈：</strong>Java, Spring Cloud, Vue3, TypeScript, Redis, MySQL, Docker</div>
+      <ul class="bullet-list">
+        <li><strong>业务中台重构：</strong>参与 UHH 商业云核心微服务研发，重构分账结算与商户核销状态机链路，支撑 2,400+ 商户、1,305 笔订单及 26.2 万元交易流水平稳流转。</li>
+        <li><strong>并发与幂等治理：</strong>设计商户分润唯一交易流水幂等 Key 与 Redis 预扣减锁，彻底杜绝资金重复清算；慢 SQL 治理将长事务查询延迟降低 42%。</li>
+      </ul>
+    </section>
 
-      <section>
-        <h2>核心项目经历</h2>
-        <!-- Project 1 -->
-        <div class="item-header">
-          <span>Agent Platform（多 Agent 协同工作流平台）</span>
-          <span>2026.06 – 2026.08</span>
-        </div>
-        <div class="item-sub">
-          <span>架构设计 & 核心研发 | Python, FastAPI, LangGraph, SSE, Docker</span>
-          <span>核心主程</span>
-        </div>
-        <ul>
-          <li><strong>Agentic 拓扑架构：</strong>基于 LangGraph 状态图设计主控调度与反思校验路由，复杂长链任务编排耗时缩减 45%。</li>
-          <li><strong>低延迟流式传输：</strong>基于 SSE 设计低延迟异步流式协议，将前端推理首字响应延迟压缩至 320ms。</li>
-        </ul>
+    <!-- 项目经历：严格 4 选 2，绝不堆砌 3~4 个项目 -->
+    <section>
+      <div class="section-title">项目经历</div>
 
-        <!-- Project 2 -->
-        <div class="item-header" style="margin-top: 6px;">
-          <span>智慧商业微服务与资金清算中台</span>
-          <span>2026.06 – 2026.08</span>
-        </div>
-        <div class="item-sub">
-          <span>后端核心主程 | Java, Spring Boot, Redis, MySQL, 微信/支付宝API</span>
-          <span>微服务研发</span>
-        </div>
-        <ul>
-          <li><strong>高并发交易：</strong>设计基于 Redis 预扣减 + Lua 脚本分布式锁防超卖机制，高并发场景杜绝超卖。</li>
-          <li><strong>支付与清算：</strong>手写微信支付 APIv3 双通道支付网关与自动化分润清算体系，保障资金流 100% 账实相符。</li>
-        </ul>
-      </section>
-    </div>
+      <!-- 项目 1 -->
+      <div class="entry-header">
+        <span class="entry-name">{{PROJECT_1_NAME}}</span>
+        <span class="entry-role">{{PROJECT_1_ROLE}}</span>
+        <span class="entry-date">{{PROJECT_1_DATE}}</span>
+      </div>
+      <div class="entry-tech"><strong>技术栈：</strong>{{PROJECT_1_TECH}}</div>
+      <ul class="bullet-list">
+        {{PROJECT_1_BULLETS}}
+      </ul>
+
+      <!-- 项目 2 -->
+      <div class="entry-header" style="margin-top: 4px;">
+        <span class="entry-name">{{PROJECT_2_NAME}}</span>
+        <span class="entry-role">{{PROJECT_2_ROLE}}</span>
+        <span class="entry-date">{{PROJECT_2_DATE}}</span>
+      </div>
+      <div class="entry-tech"><strong>技术栈：</strong>{{PROJECT_2_TECH}}</div>
+      <ul class="bullet-list">
+        {{PROJECT_2_BULLETS}}
+      </ul>
+    </section>
+
   </div>
 </body>
 </html>
